@@ -1,0 +1,45 @@
+1. unzip Codeigniter3.1.2 and rename it to ci02
+2. create a file .htaccess in ci02, and copy the following to it.
+
+RewriteEngine On
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+3. create the homeC.php file inside appication/controllers 
+4. create the homeV.php file inside appication/views
+5. create the /templates/header.php file inside appication/views
+6. create the /templates/footer.php file inside appication/views
+7. check it out with http://localhost/ci02/homeC
+
+8. refer to https://github.com/ajhalthor/signup-login-form
+   add the signin and signup form
+
+9. refer to https://github.com/hedii/Codeigniter-login-logout-register
+   see README.md and add the Signin and signup function
+   
+   CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL DEFAULT 'aaa',
+  `email` varchar(255) NOT NULL DEFAULT 'aaa@aaa',
+  `password` varchar(255) NOT NULL DEFAULT 'aaa',
+  `avatar` varchar(255) DEFAULT 'default.jpg',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `is_admin` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_confirmed` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+        `id` varchar(40) NOT NULL,
+        `ip_address` varchar(45) NOT NULL,
+        `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
+        `data` blob NOT NULL,
+        PRIMARY KEY (id),
+        KEY `ci_sessions_timestamp` (`timestamp`)
+);
+
+HW1: do the ci03 with bootstrap login form, register form with gmail notification
+submit 3/15 => 100, submit 3/22 => 80, submit 3/29 => 60
